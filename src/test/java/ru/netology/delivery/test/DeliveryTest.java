@@ -30,19 +30,19 @@ class DeliveryTest {
         String firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         int daysToAddForSecondMeeting = 7;
         String secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        $("[data-test-id-city] input").setValue(validUser.getCity());
-        $("[data-test-id-date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        $("[data-test-id-date] input").setValue(firstMeetingDate);
-        $("[data-test-id-name] input").setValue(validUser.getName());
-        $("[data-test-id-phone] input").setValue(validUser.getPhone());
-        $("[data-test-id=agreement").click();
+        $("[data-test-id = 'city'] input").setValue(validUser.getCity());
+        $("[data-test-id = 'date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+        $("[data-test-id = 'date'] input").setValue(firstMeetingDate);
+        $("[data-test-id = 'name'] input").setValue(validUser.getName());
+        $("[data-test-id = 'phone'] input").setValue(validUser.getPhone());
+        $("[data-test-id = 'agreement']").click();
         $(byText("Запланировать")).click();
         $(byText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldHave(exactText("Встречауспешно запланирована на " + firstMeetingDate))
                 .shouldBe(visible);
-        $("[data-test-id-date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        $("[data-test-id-date] input").setValue(secondMeetingDate);
+        $("[data-test-id = 'date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+        $("[data-test-id = 'date'] input").setValue(secondMeetingDate);
         $(byText("Запланировать")).click();
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"))
@@ -51,6 +51,5 @@ class DeliveryTest {
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldHave(exactText("Встреча успешно запланирована на " + secondMeetingDate))
                 .shouldBe(visible);
-
     }
 }
