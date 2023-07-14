@@ -39,9 +39,3 @@ out/
 *.zip
 *.tar.gz
 *.rar
-
-### Exclusions ###
-!gradle/wrapper/gradle-wrapper.jar
-!artifacts/app-mbank.jar
-!/src/main/
-!/src/test/
